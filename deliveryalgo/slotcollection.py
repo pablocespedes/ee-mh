@@ -22,7 +22,6 @@ class SlotCollection(object):
             while c < self.numCars:
                 tempSlot = deliveryslot.DeliverySlot(h,c)
                 tempSlot2DList[c].append(tempSlot)
-                #print tempSlot.printSlot()
                 c = c + 1
             h = h + 1
         return tempSlot2DList
@@ -31,7 +30,6 @@ class SlotCollection(object):
         h = hour - 1
         c = car - 1
         self.slot2DList[c][h].addOrder(order)
-        print("Order @ " + order.address + " added to " + self.slot2DList[c][h].printSlot())
 
     def getSlot(self, hour, car):
         h = hour - 1
