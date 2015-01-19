@@ -1,4 +1,5 @@
 import deliveryslot
+from pprint import pprint
 
 #   container object for deliveryslot
 
@@ -35,4 +36,17 @@ class SlotCollection(object):
         h = hour - 1
         c = car - 1
         return self.slot2DList[c][h]
+
+    def outputCollectionActive(self):
+        tempList = []
+        h = 0
+        while h < self.numHours:
+            c = 0
+            tempSubList = []
+            tempSubList.append(self.slot2DList[c][h].active)
+            tempList.append(tempSubList)
+            while c < self.numCars:
+                c = c + 1
+            h = h + 1
+        return pprint(tempList)
 
