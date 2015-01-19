@@ -1,6 +1,6 @@
 # ee-mh
 
-### /deliveryalgo
+## deliveryalgo
 **algo.py**: main dynamic delivery engine algo.
 **order.py**: order object, inherits from models/python.
 **deliveryslot.py**: delivery slot object that holds a list of orders.
