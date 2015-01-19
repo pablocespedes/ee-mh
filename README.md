@@ -66,7 +66,7 @@ Fourth post-algo expose the Active parameter of all Slots in the Slot Collection
 {
     "Active": "True",
     "Car": "1",
-    "Hour": 10",
+    "Hour": "10",
     "NumOrders": "2",
     "Orders": "[\"123 Main St\", \"123 Line Ave\"]"
 }
