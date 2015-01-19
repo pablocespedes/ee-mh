@@ -6,7 +6,11 @@ import json
 class Order(object):
     def __init__(self, address):
         self.address = address
+        self.dummyDistance = random.uniform(0, 5)
 
     def getDistance(self, Order):
-        return random.uniform(0, 10)
+        """
+            Implement Google Maps API here
+        """
+        return self.dummyDistance
 
