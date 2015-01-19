@@ -14,8 +14,7 @@ class SlotCollection(object):
         slot2DList.append(carList)
         slot2DList.append(hourList)
 
-        #   build the Slots
-        #   all are Active
+        #   build the DeliverySlots
         h = beginHour 
         while h <= numHours:
             c = 0
