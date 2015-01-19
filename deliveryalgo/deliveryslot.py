@@ -35,3 +35,6 @@ class DeliverySlot(object):
     def getLastOrder(self):
         return self.listOfOrders[-1]
 
+    def getFirstOrder(self):
+        return self.listOfOrders[0]
+
