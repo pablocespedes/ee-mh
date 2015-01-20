@@ -70,3 +70,6 @@ Fourth post-algo expose the Active parameter of all Slots in the Slot Collection
     "NumOrders": "2",
     "Orders": "[\"123 Main St\", \"123 Line Ave\"]"
 }
+
+### formatting methods on slots 
+All calls made to a ```SlotCollection``` object are made with ```hours``` first and ```cars``` second.  ```hours``` correspond to ```row``` lists and ```cars``` correspond to row-list elements (columns). 

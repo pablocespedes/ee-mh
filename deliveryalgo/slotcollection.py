@@ -1,7 +1,11 @@
 import deliveryslot
 from pprint import pprint
 
-#   container object for deliveryslot
+"""
+    This is a container for DeliverySlot logic model instances
+    The container is a simple 2D list
+    Does not need to be hooked to the DB
+"""
 
 class SlotCollection(object):
     def __init__(self, h, c):
@@ -10,43 +14,32 @@ class SlotCollection(object):
         self.slot2DList = self.buildSlotCollection() 
     
     def buildSlotCollection(self):
-        tempSlot2DList = []
-        carList = []    #   begin with 0
         hourList = []   #   begin with 0
-        tempSlot2DList.append(hourList)
-        tempSlot2DList.append(carList)
-
-        #   build the DeliverySlots
-        h = 0
-        while h < self.numHours:
-            c = 0
-            while c < self.numCars:
-                tempSlot = deliveryslot.DeliverySlot(h,c)
-                tempSlot2DList[c].append(tempSlot)
-                c = c + 1
-            h = h + 1
-        return tempSlot2DList
+        for h in range(self.numHours):
+            tempCarList = []
+            for c in range(self.numCars):
+                tempSlot = deliveryslot.DeliverySlot(h+1,c+1)
+                tempCarList.append(tempSlot)
+            hourList.append(tempCarList)
+        return hourList
 
     def addOrderToSlot(self, hour, car, order):
         h = hour - 1
         c = car - 1
-        self.slot2DList[c][h].addOrder(order)
+        self.slot2DList[h][c].addOrder(order)
 
     def getSlot(self, hour, car):
         h = hour - 1
         c = car - 1
-        return self.slot2DList[c][h]
+        return self.slot2DList[h][c]
 
     def outputCollectionActive(self):
-        tempList = []
-        h = 0
-        while h < self.numHours:
-            c = 0
-            tempSubList = []
-            tempSubList.append(self.slot2DList[c][h].active)
-            tempList.append(tempSubList)
-            while c < self.numCars:
-                c = c + 1
-            h = h + 1
-        return pprint(tempList)
+        activeList = []   #   begin with 0
+        for h in range(self.numHours):
+            tempCarList = []
+            tempCarList.append(h+1)
+            for c in range(self.numCars):
+                tempCarList.append(self.slot2DList[h][c].active)
+            activeList.append(tempCarList)
+        return pprint(activeList)
 

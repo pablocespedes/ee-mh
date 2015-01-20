@@ -1,8 +1,10 @@
 import order
 import json
 
-#   Logic model not hooked to DB
-
+"""
+    This is a logic model
+    Does not need to be hooked to the DB
+"""
 class DeliverySlot(object):
     def __init__(self, hour, car):
         self.hour = hour
@@ -17,8 +19,8 @@ class DeliverySlot(object):
         addressString = json.dumps(listOfAddresses)
         output = json.dumps(
                 {
-                    "Hour": str(self.hour + 1), 
-                    "Car": str(self.car + 1), 
+                    "Hour": str(self.hour), 
+                    "Car": str(self.car), 
                     "Active": str(self.active), 
                     "NumOrders": str(len(self.listOfOrders)),
                     "Orders": addressString 
