@@ -71,6 +71,14 @@ Fourth post-algo expose the Active parameter of all Slots in the Slot Collection
     "Orders": "[\"123 Main St\", \"123 Line Ave\"]"
 }
 ```
+You can also output the active/inactive attributes of the entire ```SlotCollection``` with ```newSlotCollection.outputCollectionActive()```:
+```text
+[[1, False, False],
+ [2, True, True],
+ ...
+ ...
+ [12, True, True]]
+```
 
 ### formatting methods on slots 
 All calls made to a ```SlotCollection``` object are made with ```hours``` first and ```cars``` second.  ```hours``` correspond to ```row``` lists and ```cars``` correspond to row-list elements (columns). 
