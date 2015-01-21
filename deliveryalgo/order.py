@@ -1,5 +1,4 @@
 import random
-import json
 
 """
     This is dummy object model simulating app/models/order.py
@@ -9,7 +8,7 @@ import json
 class Order(object):
     def __init__(self, address):
         self.address = address
-        self.dummyDistance = random.uniform(0, 10)
+        self.dummyDistance = random.uniform(0, 8)
 
     def getDistance(self, Order):
         """

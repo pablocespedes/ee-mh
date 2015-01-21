@@ -9,7 +9,7 @@ class DeliverySlot(object):
     def __init__(self, hour, car):
         self.hour = hour
         self.car = car
-        self.active = False 
+        self.active = None 
         self.listOfOrders = []  #   list of Order.id
 
     def printSlot(self):
