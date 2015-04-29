@@ -11,8 +11,8 @@ class SlotCollection(object):
     def __init__(self, h, c):
         self.numHours = h
         self.numCars = c
-        self.slot2DList = self.buildSlotCollection() 
-    
+        self.slot2DList = self.buildSlotCollection()
+
     def buildSlotCollection(self):
         hourList = []   #   begin with 0
         for h in range(self.numHours):
@@ -33,13 +33,15 @@ class SlotCollection(object):
         c = car - 1
         return self.slot2DList[h][c]
 
-    def outputCollectionActive(self):
-        activeList = []   #   begin with 0
+    def collectionActive(self):
+        activeList = []
         for h in range(self.numHours):
             tempCarList = []
             tempCarList.append(h+1)
             for c in range(self.numCars):
                 tempCarList.append(self.slot2DList[h][c].active)
             activeList.append(tempCarList)
-        return pprint(activeList)
+        return activeList
 
+    def outputCollectionActive(self):
+        return pprint(self.collectionActive())
