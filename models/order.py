@@ -10,13 +10,11 @@ import random
 class OrderDAO():
     _collection = mongo.db()["Order"]
 
-    def findByDates(self, date):
+    def findByDates(self, startDate, endDate):
         try:
-            parsed = arrow.get(date)
-            minDate = parsed.floor("day")
-            maxDate = parsed.ceil("day")
+            minDate = arrow.get(startDate).floor("day")
+            maxDate = arrow.get(endDate).ceil("day")
             dateQuery = {"$lte": maxDate.datetime, "$gte": minDate.datetime}
-            temp = iso_string_to_datetime(date)
             query = {"deliveryDates.date": dateQuery}
             order = self._collection.find(query)
             return order
