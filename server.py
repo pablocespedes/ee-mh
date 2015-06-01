@@ -20,22 +20,29 @@ def toOrder(order):
 
 
 class AlgoResource(restful.Resource):
-    def get(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument("startDate", type=str, required=True)
-        parser.add_argument("endDate", type=str, required=True)
-        args = parser.parse_args()
-        print args
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument(
+            "startDate", type=str, location="json", required=True)
+        self.reqparse.add_argument(
+            "endDate", type=str, location="json", required=True)
+        self.reqparse.add_argument(
+            "address", type=dict, location="json", required=True)
+        super(AlgoResource, self).__init__()
+
+    def post(self):
+        args = self.reqparse.parse_args()
         try:
             startDate = utilities.iso_string_to_datetime(args.startDate)
             endDate = utilities.iso_string_to_datetime(args.endDate)
+            address = args["address"]
             sc = SlotCollection(11, 2)
             _order = OrderDAO()
             orders = _order.findByDates(startDate, endDate)
             mapped = map(toOrder, orders)
             for o in mapped:
                 sc.addOrderToSlot(2, o.car, o)
-            newUserOrder = NewOrder("315 East 21st")
+            newUserOrder = NewOrder(address["line1"])
             deliveryalgo.algo.dynamicClusteringEngine(sc, newUserOrder)
             temp = self.pretty(sc.collectionActive())
             return temp
